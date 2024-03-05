@@ -19,22 +19,45 @@ let oneEuroIs = {
 };
 
 // Declaramos una función con el nombre exacto "formEuroToDollar"
-
+/* const fromEuroToDollar = function(valueInEuro) {
+    let valueInDollar = 1 * oneEuroIs.USD;
+    return valueInDollar;
+} */
 const fromEuroToDollar = function(valueInEuro) {
     // Convertimos el valor a dólares
     let valueInDollar = valueInEuro * oneEuroIs.USD;
     // Retornamos el valor en dólares
     return valueInDollar;
 }
-const fromDolarToYen = function(){
-    let valueInYen = oneEuroIs.USD * oneEuroIs.JPY;
-    return valueInYen; //167.455
-};
-const fromYenToPound = function (){
-    let valueInPound = (oneEuroIs.USD * oneEuroIs.JPY) * oneEuroIs.GBP;
-    return valueInPound; //145.68585000000002
+/* const fromDolarToYen = function (valueInDollar){
+    let valueInYen = oneEuroIS.USD * oneEuroIs.JPY;
+    return valueInYen;
+    console.log(oneEuroIS.USD * oneEuroIs.JPY)
+} */
+const fromDolarToYen = function (valueInDollar){
+    let valueInYen = valueInDollar * oneEuroIs.JPY / oneEuroIs.USD;
+    return valueInYen;  
 }
-module.exports = {/* sum,  */fromEuroToDollar, fromDolarToYen, fromYenToPound};
+/* const fromYenToPound = function(valueInYen){
+    let valueInPound = ((oneEuroIs.USD * oneEuroIs.JPY)*oneEuroIs.GBP);
+    return valueInPound;
+} */
+const fromYenToPound = function(valueInYen){
+    let valueInPound = valueInYen* oneEuroIs.GBP/oneEuroIs.JPY;
+    return valueInPound;
+}
+/* const fromYenToPound = function(valueInYen){
+    let valueInPound = valueInYen * oneEuroIs.GBP;
+    return valueInPound;
+} */
+module.exports = {fromEuroToDollar, fromDolarToYen, fromYenToPound};
+
+const valueInDollar = fromEuroToDollar(3.5);
+console.log("El valor en Dolares",valueInDollar);
+const valueInYen = fromDolarToYen(3.5);
+console.log("el valor en Yenes es", valueInYen); 
+const valueInPound = fromYenToPound(3.5);
+console.log("El valor en Pounds", valueInPound);
 
 
 
